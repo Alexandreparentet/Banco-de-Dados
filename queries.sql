@@ -59,3 +59,33 @@ FROM
     INNER JOIN produto ON produto.id_produto = pedido.id_produto
 WHERE
     usuario.id_usuario = 1;
+
+-- Busque
+SELECT
+usuario.nome,
+usuario.sobrenome,
+usuario.idade,
+venda.total,
+venda.forma_pagto,
+venda.data_venda
+-- Vimos da(s) tabelas(s)
+FROM
+    usuario           -- FK (Foreign Key)  PK (Primary Key)
+    INNER JOIN venda ON venda.id_usuario = usuario.id_usuario 
+    -- Unida com a tabela Venda pelo id_usuario: usuario
+-- Filtro 
+WHERE
+   idade >= 18 AND idade <= 30;
+
+SELECT
+    usuario.nome,
+    usuario.sobrenome
+
+FROM
+    usuario
+    INNER JOIN venda ON venda.id_usuario = usuario.id_usuario
+    INNER JOIN pedido ON pedido.id_venda = venda.id_venda
+    INNER JOIN produto ON pedido.id_produto = produto.id_produto
+
+WHERE 
+    produto.id_produto = 5;
